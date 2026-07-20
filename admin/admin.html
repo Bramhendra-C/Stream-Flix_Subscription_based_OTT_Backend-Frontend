@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamFlix — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div class="section-title"><h2>Admin Panel</h2></div>
+  <p style="color:var(--muted); font-size:13px; max-width:640px; margin-top:-8px;">
+    Signed in as admin. The API base URL below is set here only — every page (admin and user-facing)
+    reads this same value for the current browser tab.
+  </p>
+  <div id="settings-bar" class="settings-bar"></div>
+
+  <div class="ticket-row" style="margin-top:20px;">
+    <div class="ticket"><div class="ticket-main">
+      <h3 style="margin:0 0 6px;">Movies</h3>
+      <p class="ticket-desc" style="margin-bottom:auto;">Add, edit, and remove titles in the catalog.</p>
+      <a class="btn btn-gold btn-sm" style="align-self:flex-start;" href="admin-movies.html">Manage movies</a>
+    </div></div>
+    <div class="ticket"><div class="ticket-main">
+      <h3 style="margin:0 0 6px;">Subscriptions</h3>
+      <p class="ticket-desc" style="margin-bottom:auto;">Manage the FREE/BASIC/STANDARD/PREMIUM plans.</p>
+      <a class="btn btn-gold btn-sm" style="align-self:flex-start;" href="admin-subscriptions.html">Manage plans</a>
+    </div></div>
+    <div class="ticket"><div class="ticket-main">
+      <h3 style="margin:0 0 6px;">Users</h3>
+      <p class="ticket-desc" style="margin-bottom:auto;">View and edit registered accounts.</p>
+      <a class="btn btn-gold btn-sm" style="align-self:flex-start;" href="admin-users.html">Manage users</a>
+    </div></div>
+  </div>
+
+  <p style="color:var(--muted); font-size:12px; max-width:640px; margin-top:24px;">
+    Note: your backend has no role/permission field, so this login only gates the pages in this browser tab —
+    it doesn't stop someone calling the REST endpoints directly (curl, Postman, etc). Add real auth
+    (e.g. Spring Security with a role field and a token) on the backend before relying on this for production.
+  </p>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+  requireAdmin();
+  renderAdminHeader(null);
+  renderSettingsBar('#settings-bar');
+  document.getElementById('site-footer').innerHTML = `StreamFlix Admin &nbsp;·&nbsp; API base: <span class="mono">${esc(getApiBase())}</span>`;
+</script>
+</body>
+</html>

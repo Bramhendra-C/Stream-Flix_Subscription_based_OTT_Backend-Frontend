@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamFlix — Admin login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main class="narrow">
+  <div class="auth-card">
+    <h1 class="display">Admin login</h1>
+    <p class="auth-sub">Separate from user accounts — for managing movies, plans, and users.</p>
+
+    <form id="adminLoginForm">
+      <div class="field">
+        <label>Admin email</label>
+        <input type="email" id="adminEmail" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label>Admin password</label>
+        <input type="password" id="adminPassword" required autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;">Log in</button>
+    </form>
+
+    <div class="auth-switch"><a href="../index.html">← Back to StreamFlix</a></div>
+  </div>
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/admin-login.js"></script>
+</body>
+</html>

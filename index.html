@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamFlix — Browse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <div id="hero"></div>
+
+  <div class="section-title"><h2>Browse</h2><span class="count" id="resultCount"></span></div>
+  <form id="searchForm" class="filters" style="margin-bottom:10px;">
+    <div class="searchbox" style="max-width:260px;">
+      <span aria-hidden="true">⌕</span>
+      <input id="searchInput" placeholder="Search by exact title…" />
+    </div>
+    <select id="genreFilter"><option value="">All genres</option></select>
+    <select id="planFilter">
+      <option value="">All plans</option>
+      <option value="FREE">FREE</option>
+      <option value="BASIC">BASIC</option>
+      <option value="PREMIUM">PREMIUM</option>
+    </select>
+    <button type="button" class="btn btn-ghost btn-sm" id="clearFiltersBtn">Clear filters</button>
+  </form>
+
+  <div id="movieGrid"></div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/movies.js"></script>
+</body>
+</html>
