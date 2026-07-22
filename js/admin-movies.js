@@ -90,7 +90,7 @@ function openForm(data, isNew){
               ${fieldRow('videoUrl','Video URL','text', d.videoUrl)}
               <div class="field"><label>Required plan</label>
                 <select data-field="requiredPlan">
-                  ${['FREE','BASIC','STANDARD','PREMIUM'].map(p => `<option value="${p}" ${d.requiredPlan===p?'selected':''}>${p}</option>`).join('')}
+                  ${['FREE','BASIC','PREMIUM'].map(p => `<option value="${p}" ${d.requiredPlan===p?'selected':''}>${p}</option>`).join('')}
                 </select>
               </div>
               <div class="field" style="grid-column:1/-1;"><label>Description</label>

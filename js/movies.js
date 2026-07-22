@@ -13,8 +13,7 @@ function posterHTML(url, title){
 function movieCardHTML(m){
   return `<a class="mcard" href="movie.html?id=${m.id}" aria-label="View ${esc(m.title)}">
     ${posterHTML(m.thumbnailUrl, m.title)}
-    ${m.rating != null ? `<div class="stamp">${Number(m.rating).toFixed(1)}</div>` : ''}
-    ${m.requiredPlan ? `<div class="plan-tag">${esc(m.requiredPlan)}</div>` : ''}
+    ${m.rating != null ? `<div class="stamp">${Number(m.rating).toFixed(1)} ${esc(m.requiredPlan)}</div>` : ''}
     <div class="mcard-info">
       <h3>${esc(m.title)}</h3>
       <p>${esc(m.genre || '')} ${m.releaseYear ? '· ' + m.releaseYear : ''}</p>
@@ -45,7 +44,7 @@ function renderGrid(movies){
   const grid = document.getElementById('movieGrid');
   document.getElementById('resultCount').textContent = `${movies.length} title${movies.length===1?'':'s'}`;
   grid.innerHTML = movies.length
-    ? `<div class="grid">${movies.map(movieCardHTML).join('')}</div>`
+    ? `<div class="grid">${movies.slice().reverse().map(movieCardHTML).join('')}</div>`
     : `<div class="empty">No movies found. Try clearing filters, or add one from the Admin Panel.</div>`;
 }
 
@@ -62,7 +61,7 @@ async function loadAllMovies(){
   try{
     allMovies = await apiRequest('/movies') || [];
     populateGenreOptions(allMovies);
-    renderHero(allMovies[0]);
+    renderHero(allMovies[Math.floor(Math.random() * allMovies.length)]);
     renderGrid(allMovies);
   }catch(err){
     showApiError(err);
