@@ -5,7 +5,7 @@
    between full page loads). Cleared when the browser tab closes.
 */
 
-const DEFAULT_API_BASE = 'https://streamflix-api.duckdns.org';
+const DEFAULT_API_BASE = 'http://streamflixserver.duckdns.org:8080';
 
 function getApiBase(){
   return sessionStorage.getItem('sf_api_base') || DEFAULT_API_BASE;
